@@ -2,6 +2,7 @@
 
 // calls updateDateAndTime every second to update header information
 updateDateAndTime();
+colorChange();
 setInterval( updateDateAndTime , 1000)
 
 // Function for updating date and time in header
@@ -33,5 +34,19 @@ function updateDateAndTime() {
     }
     currentTime.text("Current time is " + hours + ":" + zero + minutes +" " + amPm)
 }
-
-
+// Changes color of table elements besed on time of day
+function colorChange () {
+    var today = new Date();
+    var hour = today.getHours();
+    var times = document.querySelectorAll(".timeSlot");
+    var timeSlots = [8,9,10,11,12,13,14,15,16,17]
+    for (var i = 0; i < timeSlots.length; i++) {
+        if(hour > timeSlots[i]){
+            times[i].classList.add("past");
+        }else if (hour == timeSlots[i]) {
+            times[i].classList.add("present");
+        }else {
+            times[i].classList.add("future");
+        }
+    }
+}
