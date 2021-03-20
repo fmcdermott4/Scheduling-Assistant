@@ -75,4 +75,11 @@ textarea{
 .form-control{
   border:transparent;
   background:transparent;
+  background-color: transparent;
+  transition:none;  
+}
+.form-control:focus{
+  outline: none;
+  background-color: transparent;
+  background:transparent;
 }
