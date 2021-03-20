@@ -12,5 +12,6 @@ https://fmcdermott4.github.io/Scheduling-Assistant/
 
 Thank you to the Georgia Tech Full Stack Coding Boot Camp staff for teaching me the skills to create this project. A special thank you goes out to Jude Clark for all the time she has spent sharing knowledge.
 
-#####Screen Shots
+#####Screen Shot
 ![image](https://user-images.githubusercontent.com/76134678/111883556-72d93480-8992-11eb-84fd-9e3214977834.png)
+![image](https://user-images.githubusercontent.com/76134678/111883825-03644480-8994-11eb-99db-0348f9ead858.png)
