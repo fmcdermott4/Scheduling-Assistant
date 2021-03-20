@@ -1,15 +1,14 @@
-// https://www.w3resource.com/javascript-exercises/javascript-basic-exercise-1.php used for date code
-
-// calls updateDateAndTime every second to update header information
+// calls updateDateAndTime and colorChenge every second to update header information and calendar colors
 updateDateAndTime();
 setInterval( updateDateAndTime , 1000)
 colorChange();
 setInterval( colorChange , 1000)
 dayObject();
 
-// Declare day object if it doesn't exist
+// Changes information in local storage
 function dayObject() {
     var today = moment().format('L');
+    // if there is no data for the current date, this block creates the objexct that stores that data
     if (localStorage.getItem(today) === null){
         var plan = {};
         for (i = 0; i < 10; i++) {
@@ -17,6 +16,7 @@ function dayObject() {
         localStorage.setItem(today , JSON.stringify(plan));
         } 
     }
+    // pulls the data from local storage and populates the calander
     var form = document.querySelectorAll(".form-control");
     for (i=0 ; i<form.length ;i++){
         form[i].value = JSON.parse(localStorage.getItem(today))[i];     
@@ -33,8 +33,10 @@ function updateDateAndTime() {
 }
 // Changes color of table elements based on time of day
 function colorChange () {
-    var today = new Date();
-    var hour = today.getHours();
+    var hour = moment().format('h');
+    if (moment().format('a') === 'pm'){
+        hour = parseInt(hour) + 12;
+    }
     var times = document.querySelectorAll(".timeSlot");
     var timeSlots = [8,9,10,11,12,13,14,15,16,17]
     for (var i = 0; i < timeSlots.length; i++) {
@@ -50,7 +52,7 @@ function colorChange () {
         }
     }
 }
-
+// On save button click, this changes the data in local storage
 function button(i){
     var times = document.querySelectorAll(".timeSlot");
     var text = times[i].childNodes[0].nextSibling.nextElementSibling.childNodes[0].value
